@@ -5,93 +5,87 @@
  * @format
  */
 
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+  View
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+} from 'react-native';
+import { Animated, Image } from "react-native";
+import BootSplash from "react-native-bootsplash";
+
+type Props = {
+  onAnimationEnd: () => void;
+};
 
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
 
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+const AnimatedBootSplash = ({ onAnimationEnd }: Props) => {
+  
+  const ref = useRef(new Animated.Value(0)).current
+
+  useEffect(()=>{
+    setTimeout(()=>{
+      Animated.timing(ref,{
+        toValue:1,
+        duration:1000,
+        useNativeDriver:false
+      }).start(()=>{
+        onAnimationEnd()
+      })
+    },500)
+   
+  },[])
+
+  const transInterPolate = ref.interpolate({
+    inputRange:[0,1],
+    outputRange:[0,500],
+    extrapolate:"clamp"
+  })
+
+  const transStyle = {transform:[{translateY:transInterPolate}]}
+
+
+
+
+
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
+    <View style={{justifyContent:"center",alignItems:"center",flex:1,backgroundColor:"#ffffff"}}>
+   <Animated.View style={[,transStyle,]}>
+    <Image source={require("./assets/bootsplash_logo.png")} />
+   </Animated.View>
+   </View>
   );
 }
 
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+
+function App(): React.JSX.Element {
+  const [splashAnimationVisible,setSplashAnimationVisisble] = useState(true)
+
+  
+useEffect(()=>{
+  BootSplash.hide()
+},[])
+
+
+
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
+    <SafeAreaView style={{flex:1}}>
+      {splashAnimationVisible ? 
+      <>
+      <AnimatedBootSplash onAnimationEnd={()=>setSplashAnimationVisisble(false)}/>
+      </>:
+      <>
+      <Text>Hi Splash</Text>
+      </>}
+     
     </SafeAreaView>
   );
 }
