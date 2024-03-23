@@ -83,7 +83,9 @@ useEffect(()=>{
       <AnimatedBootSplash onAnimationEnd={()=>setSplashAnimationVisisble(false)}/>
       </>:
       <>
-      <Text>Hi Splash</Text>
+      <View style={{flex:1,justifyContent:"center",alignItems:"center"}}>
+      <Text style={{fontSize:20,color:"black"}} >Hi Splash</Text>
+      </View>
       </>}
      
     </SafeAreaView>
