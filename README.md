@@ -79,6 +79,8 @@ To learn more about React Native, take a look at the following resources:
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
 
 
-# Using BootSplash
+# Using android splash API for Android Version>12
 
-![2024-03-23 12-33-04](https://github.com/divitrao/splashScreens/assets/67967395/2e165c92-d166-408d-bbc4-5b9fad70b956)
+![2024-03-24 15-10-57](https://github.com/divitrao/splashScreens/assets/67967395/28e62cbb-8b52-44cb-abfd-d412cd5f8bf7)
+
+
