@@ -69,24 +69,25 @@ function App(): React.JSX.Element {
   const [splashAnimationVisible,setSplashAnimationVisisble] = useState(true)
 
   
-useEffect(()=>{
-  BootSplash.hide()
-},[])
+// useEffect(()=>{
+//   BootSplash.hide()
+// },[])
 
 
 
 
   return (
     <SafeAreaView style={{flex:1}}>
-      {splashAnimationVisible ? 
+      {/* {splashAnimationVisible ? 
       <>
       <AnimatedBootSplash onAnimationEnd={()=>setSplashAnimationVisisble(false)}/>
-      </>:
+      </>: */}
       <>
       <View style={{flex:1,justifyContent:"center",alignItems:"center"}}>
       <Text style={{fontSize:20,color:"black"}} >Hi Splash</Text>
       </View>
-      </>}
+      </>
+      {/* } */}
      
     </SafeAreaView>
   );
