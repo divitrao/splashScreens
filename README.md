@@ -79,6 +79,9 @@ To learn more about React Native, take a look at the following resources:
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
 
 
-# Using BootSplash
+# Using lottie json and bootsplash we can trick my attacjing the first frame of our animation as splashscreen and navigate to animated splash screen
+![2024-03-25 15-39-37](https://github.com/divitrao/splashScreens/assets/67967395/fe7d882a-5a08-421b-9cc2-25c3e4f3b523)
 
-![2024-03-23 12-33-04](https://github.com/divitrao/splashScreens/assets/67967395/2e165c92-d166-408d-bbc4-5b9fad70b956)
+
+
+
