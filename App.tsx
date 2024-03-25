@@ -5,6 +5,7 @@
  * @format
  */
 
+import LottieView from 'lottie-react-native';
 import React, { useEffect, useRef, useState } from 'react';
 import type {PropsWithChildren} from 'react';
 import {
@@ -29,18 +30,18 @@ const AnimatedBootSplash = ({ onAnimationEnd }: Props) => {
   
   const ref = useRef(new Animated.Value(0)).current
 
-  useEffect(()=>{
-    setTimeout(()=>{
-      Animated.timing(ref,{
-        toValue:1,
-        duration:1000,
-        useNativeDriver:false
-      }).start(()=>{
-        onAnimationEnd()
-      })
-    },500)
+  // useEffect(()=>{
+  //   setTimeout(()=>{
+  //     Animated.timing(ref,{
+  //       toValue:1,
+  //       duration:1000,
+  //       useNativeDriver:false
+  //     }).start(()=>{
+  //       onAnimationEnd()
+  //     })
+  //   },500)
    
-  },[])
+  // },[])
 
   const transInterPolate = ref.interpolate({
     inputRange:[0,1],
@@ -55,11 +56,17 @@ const AnimatedBootSplash = ({ onAnimationEnd }: Props) => {
 
 
   return (
-    <View style={{justifyContent:"center",alignItems:"center",flex:1,backgroundColor:"#ffffff"}}>
-   <Animated.View style={[,transStyle,]}>
-    <Image source={require("./assets/bootsplash_logo.png")} />
-   </Animated.View>
-   </View>
+    <LottieView style={{flex:1,backgroundColor:"#000000"}} 
+    source={require('./lotties/netflix.json')} 
+    onAnimationFinish={()=>onAnimationEnd()} 
+    autoPlay  
+    loop={false}
+    />
+  //   <View style={{justifyContent:"center",alignItems:"center",flex:1,backgroundColor:"#ffffff"}}>
+  //  <Animated.View style={[,transStyle,]}>
+  //   <Image source={require("./assets/bootsplash_logo.png")} />
+  //  </Animated.View>
+  //  </View>
   );
 }
 

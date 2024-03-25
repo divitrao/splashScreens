@@ -7,8 +7,8 @@
     </style>
 
     <style name="BootTheme" parent="Theme.BootSplash">
-        <item name="bootSplashBackground">#ffffff</item>
-        <item name="bootSplashLogo">@drawable/bootsplash_logo</item>
+        <item name="bootSplashBackground">#000000</item>
+        <item name="bootSplashLogo">@drawable/bootsplash_logo_r</item>
        <!-- Only if you have a brand image -->
         <item name="postBootSplashTheme">@style/AppTheme</item>
     </style>
